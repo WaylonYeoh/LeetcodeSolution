@@ -1,0 +1,26 @@
+package org.learnqu.leetcode;
+
+import java.util.HashMap;
+
+public class Solution1 {
+
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        if (nums==null || nums.length<2) {
+            return new int[]{-1,-1};
+        }
+        int [] result = new int[2];
+        for (int i=0 ; i<nums.length ; ++i) {
+            if (i==0){
+                map.put(nums[0],0);
+                continue;
+            }
+            if (map.containsKey(target-nums[i])){
+                return new int[]{map.get(target-nums[i]),i};
+            }
+            map.put(nums[i],i);
+        }
+        return new int[]{-1,-1};
+    }
+
+}
